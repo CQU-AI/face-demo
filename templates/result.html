@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>CQU-AI圆脸识别</title>
+</head>
+
+<body style="background: beige">
+
+{% if '!!!' not in content and content%}
+<table border="0" align="center" cellpadding="60" cellspacing="0">
+    <td>
+        <div align="center" style="padding-top: 30px">
+            {% if new_url %}
+            <table border="0" align="center" cellpadding="5" cellspacing="0">
+                <tr>
+                    <td align="right"><img src="{{ file_url }}" height="300"></td>
+                </tr>
+                <tr>
+                    <td align="right"><img src="{{ new_url }}" height="300"></td>
+                </tr>
+            </table>
+            {% else %}
+            <p><img src="{{ file_url }}" width="540"> &nbsp;&nbsp;</p>
+            {% endif %}
+        </div>
+    </td>
+    <td>
+        <table border="0" align="center" cellpadding="5" cellspacing="4">
+            <tr>
+                <p style="font-size:30px"><a herf="./">照一张照片</a>，就能预测你的年龄性别</p>
+            </tr>
+
+            <tr>
+                <td align="right">年龄预测:</td>
+                <td align="left" style="color:red;">{{ content['age'] }}</td>
+            </tr>
+            <tr>
+                <td align="right">性别预测:</td>
+                <td align="left" style="color:red;">{{ content['gender'] }}</td>
+            </tr>
+            <tr>
+                <td align="right">颜值评估:</td>
+                <td align="left" style="color:red;">{{ content['score'] }}</td>
+            </tr>
+            <tr>
+                <td align="right">脸型评估:</td>
+                <td align="left" style="color:red;">{{ content['shape'] }}</td>
+            </tr>
+            <tr>
+                <td align="right">脸型置信:</td>
+                <td align="left" style="color:red;">{{ content['shape_score'] }}</td>
+            </tr>
+            <tr>
+                <td align="right"><a href="./photo">开始照相</a></td>
+                <td align="left"><a href=".">上传图片</a></td>
+            </tr>
+            <tr>
+                <p style="font-size:16px">Poweredby : 重庆大学人工智能协会, LoopyTech</p>
+            </tr>
+            <!--            <tr>-->
+            <!--                <form method="post" enctype="multipart/form-data">-->
+            <!--                    <input type="file" name="photo">-->
+            <!--                    <input type="submit" value="上传图片">-->
+            <!--                </form>-->
+            <!--            </tr>-->
+
+        </table>
+    </td>
+
+</table>
+{% else %}
+<p align="center" style="font-size:72px">照一张脸部照片，就能预测你的年龄性别</p>
+<p style="font-size:20px">Poweredby : 重庆大学人工智能协会, LoopyTech</p>
+<div>
+    <form align="center" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo">
+        <input type="submit" value="上传图片">
+    </form>
+
+</div>
+<div align="center">
+    <a href="./photo">
+        <button>开始照相</button>
+    </a></div>
+
+<h1 align="center" style="color: red">{{ content }}</h1>
+{% endif %}
+
+
+</body>
+</html>
